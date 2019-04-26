@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container">
+<br>
+  <h1>Welcome, {{ user.username }}!</h1>
+    <p><a class="btn btn-light" role="button" href="{% url 'profile' %}">Profile</a></p>
+    <p><a class="btn btn-light" role="button" href="{% url 'logout' %}">Logout</a></p>
+    <p><a class="btn btn-light" role="button" href="{% url 'password_reset' %}">Reset Password</a></p>
+</div>
+{% else %}
+    <div class="container">
+        <h1>You are not logged in</h1>
+        <p><a class="btn btn-light" href="{% url 'login' %}" role="button">Login</a></p>
+        <p><a class="btn btn-light" href="{% url 'signup' %}" role="button">Sign Up</a></p>
+    </div>
+{% endif %}
+
+{% endblock %}
