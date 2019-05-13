@@ -8,7 +8,7 @@
 {% if user.is_authenticated %}
 <div class="container">
 <br>
-  <h1>Welcome, {{ user.username }}!</h1>
+  <h1>Welcome, {{ user.first_name }}!</h1>
     <p><a class="btn btn-light" role="button" href="{% url 'profile' %}">Profile</a></p>
     <p><a class="btn btn-light" role="button" href="{% url 'logout' %}">Logout</a></p>
     <p><a class="btn btn-light" role="button" href="{% url 'password_reset' %}">Reset Password</a></p>
