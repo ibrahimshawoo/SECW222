@@ -9,7 +9,6 @@ from mysite1 import settings
 
 
 class User1(models.Model):
-    birth_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
     start_weight = models.IntegerField(default='')
     goal_weight = models.IntegerField(default='')
     height = models.IntegerField(default='')
@@ -17,11 +16,14 @@ class User1(models.Model):
     def __str__(self):
         return self.user.username
 
+
 def generate_profile(sender, **kwargs):
     if kwargs['created']:
         user_profile = User1.objects.create(user=kwargs['instance'])
 
+
 post_save.connect(generate_profile, sender=User)
+
 
 class Goals(models.Model):
     userID = models.IntegerField(default='')

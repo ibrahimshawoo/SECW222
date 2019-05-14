@@ -10,12 +10,11 @@ from django.views import generic
 
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserChangeForm
 from accounts.forms import SignUpForm, EditProfileForm
 
-# New user sign up request
+# New user sign u
+# p request
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -30,11 +29,13 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
+
 # for displaying user profile information
 def profile(request):
     args = {'user': request.user}
 
     return render(request, 'profile.html', args)
+
 
 # enables user to edit his profile information
 def edit_profile(request):
@@ -48,3 +49,4 @@ def edit_profile(request):
         form = EditProfileForm(instance=request.user)
         args = {'form': form}
         return render(request, 'edit_profile.html', args)
+
